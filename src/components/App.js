@@ -8,19 +8,18 @@ import Row from "./Row";
 
 const App = () => {
   const [personalizeUrl, setPersonalizeUrl] = useState(baseUrl + "/all");
-  const [loggedIn, setLoggedIn] = useState(true)
+  const [loggedIn, setLoggedIn] = useState(false)
 
   useEffect(() => {
     if (loggedIn) {
-      const url = `${baseUrl}/user-based/${7}`;
-      setPersonalizeUrl(url);
-    }
-    console.log(personalizeUrl);
+      setPersonalizeUrl(`/user-based/${7}`);
+    } 
+    console.log("per url", personalizeUrl);
   }, [loggedIn, personalizeUrl]);
 
   return (
-    <div className='App'>
-      <Nav />
+    <div className='app'>
+      <Nav setLoggedIn={setLoggedIn} />
       <Banner />
 
       <Row 

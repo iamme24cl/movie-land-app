@@ -23,6 +23,7 @@ const Row = ({ title, fetchUrl, id }) => {
         },
       });
       setMovies(request.data.result);
+      console.log(title, request.data.result)
       return request;
     }
 

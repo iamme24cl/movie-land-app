@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import "./Nav.css";
 
-const Nav = () => {
+const Nav = ({setLoggedIn}) => {
   const [show, handleShow] = useState(false);
 
   useEffect(() => {
@@ -28,6 +28,7 @@ const Nav = () => {
         alt="User logged"
         src="https://randomuser.me/api/portraits/thumb/men/1.jpg"
         className="nav__avatar"
+        onClick={() => setLoggedIn(true)}
       />
     </nav>
   );
