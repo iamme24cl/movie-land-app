@@ -1,5 +1,5 @@
-import ArrowBackIosIcon from "@material-ui/icons/ArrowBackIos";
-import ArrowForwardIosIcon from "@material-ui/icons/ArrowForwardIos";
+import ArrowBackIosIcon from '@mui/icons-material/ArrowBackIos';
+import ArrowForwardIosIcon from '@mui/icons-material/ArrowForwardIos';
 import React, { useEffect, useState } from "react";
 import axios from "../api/axios";
 import MovieModal from "./modal";
@@ -28,7 +28,7 @@ const Row = ({ title, fetchUrl, id }) => {
     }
 
     fetchData();
-  }, [fetchUrl, id]);
+  }, [fetchUrl, id, title]);
 
   const handleClick = (movie) => {
     setModalVisibility(true);

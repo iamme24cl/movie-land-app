@@ -1,4 +1,4 @@
-import PlayArrowIcon from "@material-ui/icons/PlayArrow";
+import PlayArrowIcon from '@mui/icons-material/PlayArrow';
 import React, { useEffect, useState } from "react";
 import axios from "../api/axios";
 import requests from "../api/requests";

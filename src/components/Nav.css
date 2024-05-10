@@ -21,9 +21,27 @@
     width: 80px;
     object-fit: contain;
 }
+.nav__notification{
+    position: fixed;
+    right: 80px;
+    width: 30px;
+    object-fit: contain;
+    color: grey;
+}
+.nav__notification:hover {
+    cursor: pointer;
+}
 .nav__avatar{
     position: fixed;
     right: 40px;
     width : 30px;
     object-fit: contain;
+    border-radius: 50%;
+}
+.nav__avatar:hover {
+    cursor: pointer;
+}
+.nav__menuList{
+    position: fixed;
+    right: 40px;
 }

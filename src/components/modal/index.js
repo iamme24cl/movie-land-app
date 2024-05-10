@@ -1,5 +1,5 @@
-import CancelIcon from "@material-ui/icons/Cancel";
-import PlayArrowIcon from "@material-ui/icons/PlayArrow";
+import CancelIcon from '@mui/icons-material/Cancel';
+import PlayArrowIcon from "@mui/icons-material/PlayArrow";
 import React from "react";
 import ReactStars from "react-stars";
 import { baseUrl } from "../../api/constants";

@@ -13,13 +13,15 @@ const App = () => {
   useEffect(() => {
     if (loggedIn) {
       setPersonalizeUrl(`/user-based/${7}`);
-    } 
+    } else {
+      setPersonalizeUrl(baseUrl + "/all");
+    }
     console.log("per url", personalizeUrl);
   }, [loggedIn, personalizeUrl]);
 
   return (
     <div className='app'>
-      <Nav setLoggedIn={setLoggedIn} />
+      <Nav setLoggedIn={setLoggedIn} loggedIn={loggedIn} />
       <Banner />
 
       <Row 
