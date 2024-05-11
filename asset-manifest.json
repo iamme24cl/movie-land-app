@@ -1,0 +1,13 @@
+{
+  "files": {
+    "main.css": "/github.io/movie-land-app/static/css/main.5f365719.css",
+    "main.js": "/github.io/movie-land-app/static/js/main.b5b1b0c3.js",
+    "index.html": "/github.io/movie-land-app/index.html",
+    "main.5f365719.css.map": "/github.io/movie-land-app/static/css/main.5f365719.css.map",
+    "main.b5b1b0c3.js.map": "/github.io/movie-land-app/static/js/main.b5b1b0c3.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.5f365719.css",
+    "static/js/main.b5b1b0c3.js"
+  ]
+}
