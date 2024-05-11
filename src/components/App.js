@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import { baseUrl } from '../api/constants';
-import requests from "../api/requests";
+import MovieRows from './MovieRows';
 import './App.css';
 import Nav from "./Nav";
 import Banner from "./Banner";
@@ -14,17 +14,20 @@ const App = () => {
   const [user, setUser] = useState({})
 
   useEffect(() => {
+    console.log("in here")
     if (verifyToken()) {
+      console.log("verify token..")
       if (localStorage.getItem("user") ){
-        u = JSON.parse(localStorage.getItem("user"));
+        const u = JSON.parse(localStorage.getItem("user"));
         setUser(u);
         setLoggedIn(true)
       }
     }
-  })
+  }, [])
 
   useEffect(() => {
     if (loggedIn) {
+      console.log(user.id)
       setPersonalizeUrl(`/user-based/${user.id}`);
     } else {
       setPersonalizeUrl(baseUrl + "/all");
@@ -37,38 +40,7 @@ const App = () => {
       <Nav setLoggedIn={setLoggedIn} loggedIn={loggedIn} setUser={setUser} />
       <Banner />
 
-      <Row 
-        title="Our Pick"
-        id="MVL"
-        fetchUrl={requests.fetchMVLPick}
-      />
-
-      {loggedIn && <Row 
-        title="Recommended For You"
-        id="RF"
-        fetchUrl={personalizeUrl}
-      />}
-      
-      <Row 
-        title="Action Movies"
-        id="AM"
-        fetchUrl={requests.fetchActionMovies}
-      />
-      <Row 
-        title="Comedy Movies"
-        id="CM"
-        fetchUrl={requests.fetchComedyMovies}
-      />
-      <Row 
-        title="Horror Movies"
-        id="HM"
-        fetchUrl={requests.fetchHorrorMovies}
-      />
-      <Row 
-        title="Romance Movies"
-        id="RM"
-        fetchUrl={requests.fetchRomanceMovies}
-      />
+      <MovieRows loggedIn={loggedIn} personalizeUrl={personalizeUrl} />
     </div>
   );
 

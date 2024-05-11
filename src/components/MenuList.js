@@ -33,7 +33,6 @@ export default function MenuListComposition({ children, setLoggedIn, setUser, lo
     event.preventDefault();
     login(email, password).then((resp) => {
         if (resp.success === true) {
-            console.log(resp.data.result)
             setLoggedIn(true)
             setUser(resp.data.result)
         }
@@ -42,6 +41,7 @@ export default function MenuListComposition({ children, setLoggedIn, setUser, lo
   }
 
   const handleLogout = (event) => {
+    localStorage.clear()
     setLoggedIn(false)
     handleClose(event)
   }

@@ -34,6 +34,7 @@ const Row = ({ title, fetchUrl, id }) => {
     setModalVisibility(true);
     setMovieSelection(movie);
   };
+  
   return (
     <section className="row">
       <h2>{title}</h2>
