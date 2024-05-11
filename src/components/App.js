@@ -1,27 +1,40 @@
 import React, { useEffect, useState } from 'react';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import { baseUrl } from '../api/constants';
 import requests from "../api/requests";
 import './App.css';
 import Nav from "./Nav";
 import Banner from "./Banner";
 import Row from "./Row";
+import verifyToken from '../helper/helper';
 
 const App = () => {
   const [personalizeUrl, setPersonalizeUrl] = useState(baseUrl + "/all");
   const [loggedIn, setLoggedIn] = useState(false)
+  const [user, setUser] = useState({})
+
+  useEffect(() => {
+    if (verifyToken()) {
+      if (localStorage.getItem("user") ){
+        u = JSON.parse(localStorage.getItem("user"));
+        setUser(u);
+        setLoggedIn(true)
+      }
+    }
+  })
 
   useEffect(() => {
     if (loggedIn) {
-      setPersonalizeUrl(`/user-based/${7}`);
+      setPersonalizeUrl(`/user-based/${user.id}`);
     } else {
       setPersonalizeUrl(baseUrl + "/all");
     }
     console.log("per url", personalizeUrl);
-  }, [loggedIn, personalizeUrl]);
+  }, [loggedIn, personalizeUrl, user.id]);
 
   return (
     <div className='app'>
-      <Nav setLoggedIn={setLoggedIn} loggedIn={loggedIn} />
+      <Nav setLoggedIn={setLoggedIn} loggedIn={loggedIn} setUser={setUser} />
       <Banner />
 
       <Row 
@@ -29,11 +42,13 @@ const App = () => {
         id="MVL"
         fetchUrl={requests.fetchMVLPick}
       />
-      <Row 
+
+      {loggedIn && <Row 
         title="Recommended For You"
         id="RF"
         fetchUrl={personalizeUrl}
-      />
+      />}
+      
       <Row 
         title="Action Movies"
         id="AM"
