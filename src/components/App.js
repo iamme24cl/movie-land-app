@@ -5,7 +5,6 @@ import MovieRows from './MovieRows';
 import './App.css';
 import Nav from "./Nav";
 import Banner from "./Banner";
-import Row from "./Row";
 import verifyToken from '../helper/helper';
 
 const App = () => {
