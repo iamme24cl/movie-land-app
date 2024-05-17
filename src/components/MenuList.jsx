@@ -7,15 +7,16 @@ import Popper from '@mui/material/Popper';
 import MenuItem from '@mui/material/MenuItem';
 import MenuList from '@mui/material/MenuList';
 import Stack from '@mui/material/Stack';
-import login from '../api/loginApi';
+import { useNavigate } from 'react-router-dom';
 import "./MenuList.css";
 
 const email = "molly.smith@example.com"
 const password = "disco"
 
-export default function MenuListComposition({ children, setLoggedIn, setUser, loggedIn }) {
+export default function MenuListComposition({ children, setLoggedIn, loggedIn }) {
   const [open, setOpen] = React.useState(false);
   const anchorRef = React.useRef(null);
+  const navigate = useNavigate();
 
   const handleToggle = () => {
     setOpen((prevOpen) => !prevOpen);
@@ -29,22 +30,12 @@ export default function MenuListComposition({ children, setLoggedIn, setUser, lo
     setOpen(false);
   };
 
-  const handleLogin = (event) => {
-    event.preventDefault();
-    login(email, password).then((resp) => {
-        if (resp.success === true) {
-            setLoggedIn(true)
-            setUser(resp.data.result)
-        }
-    })
-    handleClose(event);
-  }
-
   const handleLogout = (event) => {
     localStorage.clear()
     setLoggedIn(false)
     handleClose(event)
-  }
+    navigate("/")
+  };
 
   function handleListKeyDown(event) {
     if (event.key === 'Tab') {
@@ -53,7 +44,12 @@ export default function MenuListComposition({ children, setLoggedIn, setUser, lo
     } else if (event.key === 'Escape') {
       setOpen(false);
     }
-  }
+  };
+
+  const handleNavClick = (path) => (event) => {
+    navigate(path);
+    handleClose(event);
+  };
 
   // return focus to the button when we transitioned from !open -> open
   const prevOpen = React.useRef(open);
@@ -103,8 +99,8 @@ export default function MenuListComposition({ children, setLoggedIn, setUser, lo
                     onKeyDown={handleListKeyDown}
                   >
                     <MenuItem onClick={handleClose}>Profile</MenuItem>
-                    {!loggedIn && <MenuItem onClick={handleLogin}>Demo User Login</MenuItem>}
-                    <MenuItem onClick={handleLogout}>Logout</MenuItem>
+                    {!loggedIn && <MenuItem onClick={handleNavClick("/login")}>Login</MenuItem>}
+                    {loggedIn && <MenuItem onClick={handleLogout}>Logout</MenuItem>}
                   </MenuList>
                 </ClickAwayListener>
               </Paper>

@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import MenuListComposition from "./MenuList";
 import "./Nav.css";
 
-const Nav = ({ setLoggedIn, loggedIn, setUser }) => {
+const Nav = ({ setLoggedIn, loggedIn }) => {
   const [show, handleShow] = useState(false);
 
   useEffect(() => {
@@ -29,7 +29,6 @@ const Nav = ({ setLoggedIn, loggedIn, setUser }) => {
      <MenuListComposition
         setLoggedIn={setLoggedIn}
         loggedIn={loggedIn}
-        setUser={setUser}
         children={<img
                     alt="User logged"
                     src={loggedIn ? "https://randomuser.me/api/portraits/thumb/men/1.jpg" : process.env.PUBLIC_URL + "blank_avatar.png"}

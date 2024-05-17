@@ -5,7 +5,7 @@ import axios from "../api/axios";
 import MovieModal from "./modal";
 import "./Row.css";
 
-const Row = ({ title, fetchUrl, id }) => {
+const Row = ({ title, fetchUrl, id, addRating }) => {
   const base_url = "https://image.tmdb.org/t/p/original/";
   const [movies, setMovies] = useState([]);
   const [modalVisibility, setModalVisibility] = useState(false);
@@ -22,8 +22,8 @@ const Row = ({ title, fetchUrl, id }) => {
           "Access-Control-Allow-Origin": "*",
         },
       });
-      setMovies(request.data.result);
-      console.log(title, request.data.result)
+      setMovies(request.data.data);
+      console.log(title, request.data.data)
       return request;
     }
 
@@ -77,6 +77,7 @@ const Row = ({ title, fetchUrl, id }) => {
         <MovieModal
           {...movieSelected}
           setModalVisibility={setModalVisibility}
+          addRating={addRating}
         />
       )}
     </section>

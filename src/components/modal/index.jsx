@@ -4,7 +4,7 @@ import React from "react";
 import ReactStars from "react-stars";
 import { baseUrl } from "../../api/constants";
 import Row from "../Row";
-import "./MovieModal.css";
+import "./modal.css";
 
 const MovieModal = ({
     poster_path,
@@ -15,10 +15,12 @@ const MovieModal = ({
     rating_avg,
     rating_count,
     setModalVisibility,
+    addRating,
 }) => {
     const onRating = (rating) => {
         const rating_with_id = `${movieId}:${rating}`;
         console.log(rating_with_id);
+        addRating(rating_with_id);
         setModalVisibility(false);
     };
 
