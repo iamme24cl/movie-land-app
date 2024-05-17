@@ -10,9 +10,6 @@ import Stack from '@mui/material/Stack';
 import { useNavigate } from 'react-router-dom';
 import "./MenuList.css";
 
-const email = "molly.smith@example.com"
-const password = "disco"
-
 export default function MenuListComposition({ children, setLoggedIn, loggedIn }) {
   const [open, setOpen] = React.useState(false);
   const anchorRef = React.useRef(null);
