@@ -34,21 +34,18 @@ const App = () => {
 
   useEffect(() => {
     if (loggedIn) {
-      console.log(user.id)
       setPersonalizeUrl(`/user-based/${user.id}`);
     } else {
       setPersonalizeUrl(baseUrl + "/all");
     }
-  }, [loggedIn, user.id]);
 
-  useEffect(() => {
     if (rating.length > 0) {
       const params = rating.join("&params=");
       const url = `${baseUrl}/user-rating-based/?params=${params}`
       setPersonalizeUrl(url);
     }
     console.log(personalizeUrl);
-  }, [rating, personalizeUrl]);
+  }, [loggedIn, rating, personalizeUrl, user.id]);
 
   return (
     <div className='app'>
