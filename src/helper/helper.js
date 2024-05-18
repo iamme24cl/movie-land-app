@@ -6,4 +6,17 @@ const verifyToken = () => {
     return false
 }
 
-export default verifyToken;
+const generateRandomString = (length) => {
+    const array = new Uint8Array(length);
+    window.crypto.getRandomValues(array);
+    const characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
+    const charactersLength = characters.length;
+    let result = '';
+    for (let i = 0; i < length; i++) {
+        result += characters.charAt(array[i] % charactersLength);
+    }
+    return result;
+}
+
+
+export { verifyToken, generateRandomString };

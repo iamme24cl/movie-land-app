@@ -5,7 +5,7 @@ import MovieRows from './HomePage';
 import './App.css';
 import Nav from "./Nav";
 import LoginForm from './Login';
-import verifyToken from '../helper/helper';
+import { verifyToken } from "../helper/helper";
 
 const App = () => {
   const [personalizeUrl, setPersonalizeUrl] = useState(baseUrl + "/all");
