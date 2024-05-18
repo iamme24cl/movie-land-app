@@ -39,8 +39,7 @@ const App = () => {
     } else {
       setPersonalizeUrl(baseUrl + "/all");
     }
-    console.log("per url", personalizeUrl);
-  }, [loggedIn, personalizeUrl, user.id]);
+  }, [loggedIn, user.id]);
 
   useEffect(() => {
     if (rating.length > 0) {
