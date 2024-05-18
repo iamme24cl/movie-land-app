@@ -1,5 +1,5 @@
 import axios from "./axios";
-import { baseUrl, APP_TOKEN } from "./constants";
+import { baseUrl } from "./constants";
 import { generateRandomString } from "../helper/helper";
 import requests from "./requests";
 
