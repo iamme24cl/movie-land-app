@@ -17,7 +17,7 @@ const App = () => {
     rating.push(r);
     setRating(rating);
     const params = rating.join("&params=");
-    const url = `${baseUrl}/user-rating-based/?params=${params}`
+    const url = `${baseUrl}/user-rating-based?params=${params}`
     setPersonalizeUrl(url);
   };
 
@@ -41,7 +41,7 @@ const App = () => {
 
     if (rating.length > 0) {
       const params = rating.join("&params=");
-      const url = `${baseUrl}/user-rating-based/?params=${params}`
+      const url = `${baseUrl}/user-rating-based?params=${params}`
       setPersonalizeUrl(url);
     }
     console.log(personalizeUrl);
