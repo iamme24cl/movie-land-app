@@ -88,6 +88,7 @@ export default function Navbar({ loggedIn, setLoggedIn, query, setQuery }) {
     localStorage.clear();
     setLoggedIn(false);
     handleMenuClose(event);
+    setQuery("");
     navigate("/");
   };
 
