@@ -123,7 +123,10 @@ export default function Navbar({ loggedIn, setLoggedIn, query, setQuery }) {
             alt="movie_land logo"
             src={process.env.PUBLIC_URL + "/mvl_logo.png"}
             style={{ height: "50px", cursor: "pointer" }}
-            onClick={() => navigate("/")}
+            onClick={() => {
+              navigate("/");
+              setQuery("");
+            }}
           />
           <Search>
             <SearchIconWrapper>

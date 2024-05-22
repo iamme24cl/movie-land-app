@@ -1,12 +1,10 @@
 import React, { useEffect, useState } from 'react';
 import { Box } from '@mui/material';
-import ArrowBackIosIcon from '@mui/icons-material/ArrowBackIos';
-import ArrowForwardIosIcon from '@mui/icons-material/ArrowForwardIos';
 import axios from '../api/axios';
 import requests from '../api/requests';
 import Banner from './Banner';
 import MovieModal from "./modal";
-import "./Row.css";
+import "./MatchingMovies.css";
 
 const MatchingMovies = ({ addRating, query }) => {
     const base_url = "https://image.tmdb.org/t/p/original/";
@@ -36,50 +34,28 @@ const MatchingMovies = ({ addRating, query }) => {
     };
 
   return (
-    <Box sx={{ height: '100vh'}}>
+    <Box sx={{ minHeight: '100vh' }}>
         <Banner />
-        <section className="row">
-            <h2>Matching Movies</h2>
-            <div className="slider">
-                <div className="slider__arrow-left">
-                <span
-                    className="arrow"
-                    onClick={() => {
-                    document.getElementById("MMV").scrollLeft -= window.innerWidth - 80;
-                    }}
-                >
-                    <ArrowBackIosIcon />
-                </span>
+        <h2 className='title'>Matching Movies</h2>
+        <section className='grid'>
+                <div id="MMV" className="grid__posters">
+                  {/**SEVERAL ROW__POSTER */}
+                  {movies.map((movie, idx) => (
+                      <img
+                      key={idx}
+                      onClick={() => handleClick(movie)}
+                      className={`grid__poster grid__posterLarge`}
+                      src={`${base_url}${movie.poster_path}`}
+                      loading="lazy"
+                      alt={movie.title}
+                      />
+                  ))}
                 </div>
-                <div id="MMV" className="row__posters">
-                {/**SEVERAL ROW__POSTER */}
-                {movies.map((movie, idx) => (
-                    <img
-                    key={idx}
-                    onClick={() => handleClick(movie)}
-                    className={`row__poster row__posterLarge`}
-                    src={`${base_url}${movie.poster_path}`}
-                    loading="lazy"
-                    alt={movie.title}
-                    />
-                ))}
-                </div>
-                <div className="slider__arrow-right">
-                <span
-                    className="arrow"
-                    onClick={() => {
-                    document.getElementById("MMV").scrollLeft += window.innerWidth - 80;
-                    }}
-                >
-                    <ArrowForwardIosIcon />
-                </span>
-                </div>
-            </div>
             {modalVisibility && (
                 <MovieModal
-                {...movieSelected}
-                setModalVisibility={setModalVisibility}
-                addRating={addRating}
+                  {...movieSelected}
+                  setModalVisibility={setModalVisibility}
+                  addRating={addRating}
                 />
             )}
         </section>
