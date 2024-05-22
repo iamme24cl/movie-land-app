@@ -64,10 +64,8 @@ const App = () => {
           <Route path='/login' exact element={<LoginForm setLoggedIn={setLoggedIn} setUser={setUser} />} />
         </Routes>
       </Router>
-      
     </div>
   );
-
 };
 
 export default App;
