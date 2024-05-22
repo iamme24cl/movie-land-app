@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { TextField, Button, Paper, Box, Typography, Container, CssBaseline } from "@mui/material";
+import { TextField, Button, Paper, Box, Typography, Container } from "@mui/material";
 import { useNavigate } from 'react-router-dom';
 import login from "../api/loginApi";
 
@@ -23,7 +23,6 @@ const LoginForm = ({ setLoggedIn, setUser }) => {
 
     return (
         <Box sx={{ height: '100vh', display: 'flex', flexDirection: 'column', justifyContent: 'center' }}>
-            <CssBaseline />
             <Container component="main" maxWidth="xs">
                 <Paper elevation={6} sx={{ marginTop: 8, display: 'flex',  flexDirection: 'column', alignItems: 'center', padding: 3}}>
                     <Typography component="h1" variant="h5">

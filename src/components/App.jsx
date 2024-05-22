@@ -2,16 +2,19 @@ import React, { useEffect, useState } from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import { baseUrl } from '../api/constants';
 import MovieRows from './HomePage';
-import './App.css';
-import Nav from "./Nav";
+import Navbar from './Navbar';
+import MatchingMovies from './MatchingMovies';
 import LoginForm from './Login';
+import './App.css';
+
 import { verifyToken } from "../helper/helper";
 
 const App = () => {
   const [personalizeUrl, setPersonalizeUrl] = useState(baseUrl + "/all");
   const [rating, setRating] = useState([]);
-  const [loggedIn, setLoggedIn] = useState(false)
-  const [user, setUser] = useState({})
+  const [loggedIn, setLoggedIn] = useState(false);
+  const [user, setUser] = useState({});
+  const [query, setQuery] = useState('');
 
   const addRating = (r) => {
     rating.push(r);
@@ -50,9 +53,14 @@ const App = () => {
   return (
     <div className='app'>
       <Router>
-      <Nav setLoggedIn={setLoggedIn} loggedIn={loggedIn} />
+        <Navbar setLoggedIn={setLoggedIn} loggedIn={loggedIn} query={query} setQuery={setQuery} />
         <Routes>
-          <Route path='/' exact element={<MovieRows loggedIn={loggedIn} personalizeUrl={personalizeUrl} addRating={addRating} />} />
+          <Route 
+            path='/' exact 
+            element={query.length === 0 ? 
+              <MovieRows loggedIn={loggedIn} personalizeUrl={personalizeUrl} addRating={addRating} /> : 
+              <MatchingMovies addRating={addRating} query={query} />} 
+          />
           <Route path='/login' exact element={<LoginForm setLoggedIn={setLoggedIn} setUser={setUser} />} />
         </Routes>
       </Router>

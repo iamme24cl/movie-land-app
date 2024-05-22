@@ -95,7 +95,7 @@ export default function MenuListComposition({ children, setLoggedIn, loggedIn })
                     aria-labelledby="composition-button"
                     onKeyDown={handleListKeyDown}
                   >
-                    <MenuItem onClick={handleClose}>Profile</MenuItem>
+                    {loggedIn && <MenuItem onClick={handleClose}>Profile</MenuItem>}
                     {!loggedIn && <MenuItem onClick={handleNavClick("/login")}>Login</MenuItem>}
                     {loggedIn && <MenuItem onClick={handleLogout}>Logout</MenuItem>}
                   </MenuList>
