@@ -82,6 +82,7 @@ export default function Navbar({ loggedIn, setLoggedIn, query, setQuery }) {
   const handleNavClick = (path) => (event) => {
     navigate(path);
     handleMenuClose(event);
+    setQuery("");
   };
 
   const handleLogout = (event) => {
