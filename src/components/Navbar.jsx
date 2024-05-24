@@ -22,9 +22,11 @@ const Search = styled('div')(({ theme }) => ({
   marginRight: theme.spacing(2),
   marginLeft: 0,
   width: '100%',
+  display: 'none',
   [theme.breakpoints.up('sm')]: {
     marginLeft: theme.spacing(3),
     width: 'auto',
+    display: 'block',
   },
 }));
 
@@ -122,7 +124,7 @@ export default function Navbar({ loggedIn, setLoggedIn, query, setQuery }) {
           <img
             alt="movie_land logo"
             src={process.env.PUBLIC_URL + "/mvl_logo.png"}
-            style={{ height: "50px", cursor: "pointer" }}
+            style={{ height: "40px", cursor: "pointer" }}
             onClick={() => {
               navigate("/");
               setQuery("");
@@ -140,7 +142,7 @@ export default function Navbar({ loggedIn, setLoggedIn, query, setQuery }) {
             />
           </Search>
           <Box sx={{ flexGrow: 1 }} />
-          <Box sx={{ display: { xs: 'none', md: 'flex' } }}>
+          <Box>
             {!loggedIn && <IconButton
               size="large"
               edge="end"
