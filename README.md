@@ -24,23 +24,23 @@ The Movie Recommender App is designed to suggest movies to users based on their 
 
 ### Home Page
 
-![Home Page](media/home.jpg)
+![Home Page](public/home.jpg)
 
 ### Login Page
 
-![Login Page](media/login.jpg)
+![Login Page](public/login.jpg)
 
 ### Recommended Movies
 
-![Recommended Movies](media/recommended.jpg)
+![Recommended Movies](public/recommended.jpg)
 
 ### Search Movies
 
-![Search Movies](media/search.jpg)
+![Search Movies](public/search.jpg)
 
 ### Rate Movies
 
-![Rate Movies](media/rate.jpg)
+![Rate Movies](public/rate.jpg)
 
 ## License
 
